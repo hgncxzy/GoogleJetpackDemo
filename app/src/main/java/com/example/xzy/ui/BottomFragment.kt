@@ -8,8 +8,8 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.TextView
-import com.example.xzy.R
+import com.example.xzy.databinding.FragmentBottomBinding
+import kotlinx.android.synthetic.main.fragment_bottom.*
 
 /**
  * Description :
@@ -18,19 +18,18 @@ import com.example.xzy.R
 class BottomFragment : Fragment() {
 
     private var mModel: AccountModel? = null
-    private var mText: TextView? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_bottom, container, false)
+        val binding = FragmentBottomBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mText = view.findViewById(R.id.fragment_text_view)
         mModel = ViewModelProviders.of(activity!!).get(AccountModel::class.java)
         mModel!!.account.observe(this,
             Observer { accountBean ->
-                mText!!.text = AccountModel.getFormatContent(accountBean!!.name, accountBean.phone, accountBean.blog)
+                fragment_text_view!!.text = AccountModel.getFormatContent(accountBean!!.name, accountBean.phone, accountBean.blog)
             })
     }
 }

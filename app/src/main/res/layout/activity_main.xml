@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
-
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<data>
+    <variable
+            name="bean"
+            type="com.example.xzy.bean.AccountBean"/>
+</data>
+<LinearLayout android:layout_width="match_parent"
+              android:layout_height="match_parent"
+                android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -27,11 +30,33 @@
             android:text="post数据" />
 
         <TextView
-            android:id="@+id/textView"
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+
+        <TextView
+            android:id="@+id/nickName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp" />
+            android:paddingRight="10dp"
+            android:text="@{bean.name}"/>
+        <TextView
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@{bean.phone}"/>
+        <TextView
+                android:id="@+id/blog"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@{bean.blog}"/>
     </LinearLayout>
 
     <LinearLayout
@@ -49,5 +74,5 @@
         android:layout_weight="1"
         android:background="@drawable/fragment_background_shape"
         android:orientation="vertical" />
-
 </LinearLayout>
+</layout>
