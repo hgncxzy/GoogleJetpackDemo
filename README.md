@@ -59,6 +59,10 @@ LiveData 是由 observer 类表示的观察者视为处于活动状态，如果�
 
   Activity或者Fragment只要在需要观察数据的时候观察数据即可，不需要理会生命周期变化了。这一切都交给LiveData来自动管理。
 
+#### DataBinding 教程
+
+1. [DataBinding 教程](https://www.jianshu.com/p/53925ccb900e)
+
 #### 参考
 
 参考了java 版本的 Demo https://github.com/mengjingbo/ViewModelAndLiveDataSample 
