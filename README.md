@@ -1,5 +1,9 @@
 # ViewModelAndLiveDataSample
 
+#### 说明
+
+master 分支是关于 livedata + viewmodel 的 demo，分支在 master 的基础上添加了 databinding 的用法。
+
 #### 使用
 
 需要引入依赖
