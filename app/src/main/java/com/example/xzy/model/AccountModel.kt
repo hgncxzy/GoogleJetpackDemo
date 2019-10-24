@@ -12,6 +12,7 @@ import android.util.Log
 class AccountModel(application: Application) : AndroidViewModel(application) {
 
     val account = MutableLiveData<AccountBean>()
+    val result = MutableLiveData<String>()
 
     fun setAccount(name: String, phone: String, blog: String) {
         account.value = AccountBean(name, phone, blog)
