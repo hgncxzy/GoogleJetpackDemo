@@ -6,7 +6,26 @@ master 分支是关于 livedata + viewmodel 的 demo，分支在 master 的基�
 
 #### 使用
 
-需要引入依赖
+需要打开开关以支持 databinding
+
+官方教程： https://developer.android.google.cn/topic/libraries/data-binding/start
+
+To configure your app to use data binding, add the `dataBinding` element to your `build.gradle` file in the app module, as shown in the following example:
+
+```groovy
+android {
+    ...
+    dataBinding {
+        enabled = true
+    }
+}
+```
+
+需要引入依赖以支持 livedata + viewmodel
+
+官方教程 livedata ： https://developer.android.google.cn/topic/libraries/architecture/livedata
+
+官方教程 viewmodel：https://developer.android.google.cn/topic/libraries/architecture/viewmodel
 
 ```kotlin
 dependencies {
@@ -63,17 +82,13 @@ LiveData 是由 observer 类表示的观察者视为处于活动状态，如果�
 
   Activity或者Fragment只要在需要观察数据的时候观察数据即可，不需要理会生命周期变化了。这一切都交给LiveData来自动管理。
 
-#### DataBinding 教程
+#### 关于 DataBinding 
 
 1. [DataBinding 教程](https://www.jianshu.com/p/53925ccb900e)
 
 #### 参考
 
-参考了java 版本的 Demo https://github.com/mengjingbo/ViewModelAndLiveDataSample 
-
-感谢原作者
-
-
+参考了java 版本的 Demo https://github.com/mengjingbo/ViewModelAndLiveDataSample ，感谢原作者
 
 #### 作者
 
