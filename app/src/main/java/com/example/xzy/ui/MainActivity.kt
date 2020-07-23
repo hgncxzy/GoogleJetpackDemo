@@ -12,8 +12,8 @@ import com.example.xzy.model.AccountModel
 import com.example.xzy.bean.AccountBean
 
 /**
- *  1.得到 viewModel 对象,并定义一个 MutableLiveData<T> 类型的对象  a
- *  2. viewModel 绑定监听  a
+ *  1.得到 viewModel 对象,并定义一个 MutableLiveData<T> 类型的对象
+ *  2. viewModel 绑定监听
  *  3. post 一条数据
  *  4. 监听里面更新 UI
  *
