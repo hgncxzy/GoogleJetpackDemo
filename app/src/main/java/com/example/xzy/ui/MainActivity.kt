@@ -4,12 +4,9 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
 import com.example.xzy.R
-import com.example.xzy.model.AccountModel
-import com.example.xzy.bean.AccountBean
+import com.example.xzy.model.MyViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  *  1.得到 viewModel 对象,并定义一个 MutableLiveData<T> 类型的对象
@@ -21,45 +18,29 @@ import com.example.xzy.bean.AccountBean
  * */
 class MainActivity : AppCompatActivity() {
 
-    private var mModel: AccountModel? = null
+    private lateinit var mModel: MyViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val mText = findViewById<TextView>(R.id.textView)
         // 1.得到 viewModel 对象
-        mModel = ViewModelProviders.of(this).get(AccountModel::class.java)
-
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container_1, TopFragment())
+        mModel = ViewModelProviders.of(this).get(MyViewModel::class.java)
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container_1, TopFragment())
             .commit()
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container_2, BottomFragment()).commit()
-        findViewById<Button>(R.id.main_set_button).setOnClickListener {
-            // 3. post 一条数据
-            // 设置一条数据
-            // mModel.setAccount("arthining", "136*****850", "http://www.baidu.com");
-            // post一条数据
-            mModel!!.account.postValue(
-                AccountBean(
-                    "arthining",
-                    "136*****850",
-                    "http://www.baidu.com"
-                )
-            )
-            mModel?.result?.postValue("hello world")
-        }
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container_2, BottomFragment())
+            .commit()
         // 2. 绑定监听
-        mModel!!.account.observe(this, Observer { accountBean ->
-            // 4.更新 UI
-            mText.text = AccountModel.getFormatContent(
-                accountBean!!.name,
-                accountBean.phone,
-                accountBean.blog
-            )
+        mModel.result.observe(this, Observer {
+            tv_result.text = it
         })
 
-        mModel?.result?.observe(this, Observer { t ->
-            Toast.makeText(this, t, Toast.LENGTH_SHORT).show()
-        })
+        // 3. 更新数据
+        main_set_button.setOnClickListener {
+            mModel.result.postValue("我来自 MainActivity")
+        }
     }
 }

@@ -2,42 +2,39 @@
 
 #### 说明
 
-master 分支是关于 livedata + viewmodel 的 demo，分支在 master 的基础上添加了 databinding 的用法。
+本例包含了：
+
+1.  LiveData 的单独使用；
+2. LiveData + ViewModel + DataBinding 配合使用；
+
+
 
 #### 使用
 
-需要引入依赖
+需要引入相关的依赖，请按需引用
 
 ```kotlin
-dependencies {
-   ...
-    // viewModel and liveData library
-    implementation 'android.arch.lifecycle:viewmodel:1.1.1'
-    implementation 'android.arch.lifecycle:livedata:1.1.1'
-    implementation 'android.arch.lifecycle:extensions:1.1.1'
-    ...
-}
-
+// ViewModel and LiveData
+implementation "android.arch.lifecycle:extensions:1.1.0"
+// alternatively, just ViewModel
+implementation "android.arch.lifecycle:viewmodel:1.1.0"
+// alternatively, just LiveData
+implementation "android.arch.lifecycle:livedata:1.1.0"
 ```
 
-
-
-#### 关于ViewModel
-
-ViewModel类的设计目的是以一种关注生命周期的方式存储和管理与UI相关的数据。 
-
-**例如：**
-
-Activity 在配置发生改变时(屏幕旋转)，Activity 就会重新创建，onCreate() 方法也会重新调用。我们可以在onSaveInstanceState() 方法中保存数据，并从onCreate() 方法中通过 Bundle 恢复数据，但这种方法只适用于可以对其进行序列化的少量数据，而不适用于潜在的大量数据。使用 ViewModel 的话 ViewModel 会自动保留之前的数据并给新的Activity或Fragment使用。直到当前Activity被系统销毁时，Framework 会调用 ViewModel 的onCleared() 方法，我们可以在 onCleared() 方法中做一些资源清理操作。
-
-#### 关于LiveData
+#### 关于 LiveData
 LiveData 是一个可观察的数据持有者类。与常见的观察者不同，LiveData 是有生命周期感知的。这意味着它尊重其他应用程序组件的生命周期，比如 Activity、Fragment 或 Service。这种感知确保 LiveData 只更新处于生命周期状态内的应用程序组件。
 
 LiveData 是由 observer 类表示的观察者视为处于活动状态，如果其生命周期处于 STARTED 或 RESUMED 状态。LiveData 会将观察者视为活动状态，并通知其数据的变化。LiveData 未注册的观察对象以及非活动观察者是不会收到有关更新的通知。
 
+#### setValue 和 postValue 区别
 
+- setValue
+  必须在主线程调用。
+- postValue
+  发送一个任务到主线程，可以在子线程中更新数据。多个任务被发送时，只有最后一个会被执行。
 
-#### LiveData 优点
+#### LiveData  优点
 
 - 确保UI界面的数据状态
 
@@ -63,13 +60,20 @@ LiveData 是由 observer 类表示的观察者视为处于活动状态，如果�
 
   Activity或者Fragment只要在需要观察数据的时候观察数据即可，不需要理会生命周期变化了。这一切都交给LiveData来自动管理。
 
+#### 关于 ViewModel
+
+ViewModel 类的设计目的是以一种关注生命周期的方式存储和管理与UI相关的数据。 
+
+**例如：**
+
+Activity 在配置发生改变时(屏幕旋转)，Activity 就会重新创建，onCreate() 方法也会重新调用。我们可以在onSaveInstanceState() 方法中保存数据，并从onCreate() 方法中通过 Bundle 恢复数据，但这种方法只适用于可以对其进行序列化的少量数据，而不适用于潜在的大量数据。使用 ViewModel 的话 ViewModel 会自动保留之前的数据并给新的Activity或Fragment使用。直到当前Activity被系统销毁时，Framework 会调用 ViewModel 的onCleared() 方法，我们可以在 onCleared() 方法中做一些资源清理操作。
+
+#### 关于 DataBinding
+
 #### 参考
 
-参考了java 版本的 Demo https://github.com/mengjingbo/ViewModelAndLiveDataSample 
-
-感谢原作者
-
-
+1. 参考了java 版本的 Demo https://github.com/mengjingbo/ViewModelAndLiveDataSample  感谢原作者
+2.  
 
 #### 作者
 
