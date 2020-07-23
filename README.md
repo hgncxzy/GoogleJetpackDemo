@@ -4,10 +4,14 @@
 
 本例包含了：
 
-1.  LiveData 的单独使用；
-2. LiveData + ViewModel + DataBinding 配合使用；
+1.  LiveData 的单独使用 （master 分支）；
+2. LiveData + ViewModel  配合使用（master 分支）；
+3. LiveData + ViewModel + DataBinding 配合使用（add-databinding 分支）；
 
+具体使用文档参考： 
 
+1. [LiveData && ViewModel 使用详解](https://www.jianshu.com/p/6a19424e5c62)
+2. [DataBinding 使用介绍](https://www.jianshu.com/p/d3d8f842b5ec)
 
 #### 使用
 
@@ -73,7 +77,6 @@ Activity 在配置发生改变时(屏幕旋转)，Activity 就会重新创建，
 #### 参考
 
 1. 参考了java 版本的 Demo https://github.com/mengjingbo/ViewModelAndLiveDataSample  感谢原作者
-2.  
 
 #### 作者
 
