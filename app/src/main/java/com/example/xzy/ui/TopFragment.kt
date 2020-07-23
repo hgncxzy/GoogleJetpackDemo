@@ -9,10 +9,7 @@ import android.os.Bundle
 import android.view.ViewGroup
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.TextView
-import com.example.xzy.R
 import com.example.xzy.databinding.FragmentTopBinding
-import kotlinx.android.synthetic.main.fragment_top.*
 
 /**
  * Description :
@@ -21,27 +18,37 @@ import kotlinx.android.synthetic.main.fragment_top.*
 class TopFragment : Fragment() {
 
     private var mModel: AccountModel? = null
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        var binding = FragmentTopBinding.inflate(inflater,container,false)
-        return binding.root
+    private var binding: FragmentTopBinding? = null
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentTopBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mModel = activity?.let { ViewModelProviders.of(it).get(AccountModel::class.java) }
-        fragment_set_button.setOnClickListener {
-            mModel!!.account.postValue(
+        binding?.fragmentSetButton?.setOnClickListener {
+            mModel?.account?.postValue(
                 AccountBean(
-                    "arthining",
+                    "xzy",
                     "136*****850",
                     "这段数据是从Fragment中Post出来的"
                 )
             )
         }
-        mModel!!.account.observe(this,
+
+        mModel?.account?.observe(this,
             Observer { accountBean ->
-                fragment_text_view!!.text = AccountModel.getFormatContent(accountBean!!.name, accountBean.phone, accountBean.blog)
+                binding?.fragmentTextView?.text = AccountModel.getFormatContent(
+                    accountBean!!.name,
+                    accountBean.phone,
+                    accountBean.blog
+                )
             })
     }
+
 }

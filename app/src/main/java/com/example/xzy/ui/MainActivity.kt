@@ -12,7 +12,7 @@ import com.example.xzy.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
- * 在 viewModel + livedata 的基础上，添加了 databinding 组件
+ * 在 ViewModel + LiveData 的基础上，添加了 DataBinding 组件
  * */
 class MainActivity : AppCompatActivity() {
 
@@ -25,30 +25,35 @@ class MainActivity : AppCompatActivity() {
             DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
         val accountBean = AccountBean("xzy", "1367****6850", "csdn.net")
         binding.bean = accountBean
-
         mModel = ViewModelProviders.of(this).get(AccountModel::class.java)
-
-        supportFragmentManager.beginTransaction().replace(R.id.fragment_container_1, TopFragment())
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container_1, TopFragment())
             .commit()
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container_2, BottomFragment()).commit()
-        main_set_button.setOnClickListener {
-            // 设置一条数据
-            // mModel.setAccount("arthining", "136*****850", "http://www.baidu.com");
-            // post一条数据
-            mModel!!.account.postValue(
-                AccountBean(
-                    "arthining",
-                    "136*****850",
-                    "http://www.baidu.com"
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container_2, BottomFragment())
+            .commit()
+        binding.apply {
+            mainSetButton.setOnClickListener {
+                // 设置一条数据
+                // mModel.setAccount("arthining", "136*****850", "http://www.baidu.com");
+                // post一条数据
+                mModel?.account?.postValue(
+                    AccountBean(
+                        "arthining",
+                        "136*****850",
+                        "http://www.baidu.com"
+                    )
                 )
-            )
+            }
         }
-        mModel!!.account.observe(this, Observer { accountBean ->
+
+        mModel?.account?.observe(this, Observer {
             textView.text = AccountModel.getFormatContent(
-                accountBean!!.name,
-                accountBean.phone,
-                accountBean.blog
+                it?.name,
+                it?.phone,
+                it?.blog
             )
         })
     }
