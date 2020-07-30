@@ -1,3 +1,4 @@
+include ':workmanager'
 include ':lifecycle'
 include ':livedata'
 include ':app'
