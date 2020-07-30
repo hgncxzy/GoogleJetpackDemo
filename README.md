@@ -8,12 +8,14 @@
 2. LiveData + ViewModel  配合使用（master 分支）；
 3. LiveData + ViewModel + DataBinding 配合使用（add-databinding 分支）；
 4.  Lifecycle 的基本使用（master）
+5.  WorkManager 的基本使用（master）
 
 具体使用文档参考： 
 
 1. [LiveData && ViewModel 使用详解](https://www.jianshu.com/p/6a19424e5c62)
 2. [DataBinding 使用介绍](https://www.jianshu.com/p/d3d8f842b5ec)
 3. [Android Jetpack架构组件：一文带你了解Lifecycle（使用篇）](https://zhuanlan.zhihu.com/p/88905213)
+4. [Android Jetpack 之 WorkManger---入门使用](https://www.jianshu.com/p/b65461c79934)
 
 #### 使用
 
