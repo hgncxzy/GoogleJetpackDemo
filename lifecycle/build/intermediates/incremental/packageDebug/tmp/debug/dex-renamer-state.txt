@@ -1,0 +1,4 @@
+#Wed Jul 29 10:32:25 CST 2020
+base.0=C\:\\xzy_projects\\ViewModelAndLiveDataSample\\lifecycle\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
