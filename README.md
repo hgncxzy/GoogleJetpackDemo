@@ -9,6 +9,7 @@
 3. LiveData + ViewModel + DataBinding 配合使用（add-databinding 分支）；
 4.  Lifecycle 的基本使用（master）
 5.  WorkManager 的基本使用（master）
+6.  依赖注入框架 Hilt 的基本使用（master）
 
 具体使用文档参考： 
 
@@ -16,6 +17,7 @@
 2. [DataBinding 使用介绍](https://www.jianshu.com/p/d3d8f842b5ec)
 3. [Android Jetpack架构组件：一文带你了解Lifecycle（使用篇）](https://zhuanlan.zhihu.com/p/88905213)
 4. [Android Jetpack 之 WorkManger---入门使用](https://www.jianshu.com/p/b65461c79934)
+5. [Jetpack新成员，一篇文章带你玩转Hilt和依赖注入](https://zhuanlan.zhihu.com/p/335631378)
 
 #### 使用
 
