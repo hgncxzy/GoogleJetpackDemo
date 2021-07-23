@@ -1,15 +1,21 @@
 package com.xzy.lifecycle
 
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.LifecycleObserver
-import android.arch.lifecycle.OnLifecycleEvent
+
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
 import com.xzy.lifecycle.mvp.MyPresenter
 
 /**
- * lifecycle 用法参考 https://zhuanlan.zhihu.com/p/88905213
+ * 作用：
+ * lifecycle是让业务组件(如presenter)感知Activity/Fragment生命周期
+ * 实现：
+ * 1.让业务组件实现LifecycleObserver接口
+ * 2.将业务组件实例添加到观察者队列lifecycle.addObserver(presenter)
+ * lifecycle 用法参考 https://github.com/android/architecture-components-samples
  * Lifecycle的基本用法
  * */
 class MainActivity : AppCompatActivity() {
